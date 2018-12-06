@@ -15,11 +15,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    json_response(:updated) if @product.update!(product_params)
+    json_response(@product) if @product.update!(product_params)
   end
 
   def destroy
-    json_response(:deleted) if @product.destroy
+    json_response(@product) if @product.destroy
   end
 
   private
