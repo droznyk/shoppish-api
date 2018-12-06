@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
   def setup
-    @product = products(:valid)
+    @product = build(:product)
   end
 
   test 'valid product' do
