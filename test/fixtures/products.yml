@@ -1,13 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-valid:
-  name: Kiełbasa
-  description: Kiełbasa krakowska sucha
-  price: 22.50
-  quantity: 10
-
-two:
-  name: MyString
-  description: MyText
-  price: 1.5
-  quantity: 1
