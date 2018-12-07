@@ -43,8 +43,4 @@ class ProductsController < ApplicationController
   def fetch_product
     @product = Product.find(params[:id])
   end
-
-  def respond_with_error(object, status)
-    render json: { errors: object.errors }, status: status
-  end
 end
