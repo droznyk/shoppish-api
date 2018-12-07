@@ -1,7 +1,7 @@
 module ErrorHandler
   extend ActiveSupport::Concern
   
-  def respond_with_error(object, status)
+  def respond_with_error(object, status= :unprocessable_entity)
     render json: { errors: object.errors }, status: status
   end
 
