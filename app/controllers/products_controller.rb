@@ -6,8 +6,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create!(product_params)
-    json_response(@product, :created)
+    @product = Product.new(product_params)
+    if @product.save
+      json_response(@product, :created)
+    else
+      respond_with_error(@product, :unprocessable_entity)
+    end
   end
 
   def show
@@ -15,7 +19,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    json_response(@product) if @product.update!(product_params)
+    if @product.update(product_params)
+      json_response(@product)
+    else
+      respond_with_error(@product, :unprocessable_entity)
+    end
   end
 
   def destroy
@@ -34,5 +42,9 @@ class ProductsController < ApplicationController
 
   def fetch_product
     @product = Product.find(params[:id])
+  end
+
+  def respond_with_error(object, status)
+    render json: { errors: object.errors }, status: status
   end
 end
