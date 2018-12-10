@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :customer do
-    name { "MyString" }
-    email { "MyString" }
-    street { "MyString" }
-    zip_code { "MyString" }
-    city { "MyString" }
+    name { "John Elder" }
+    email { "john@elder.com" }
+    street { "Sesame 101" }
+    zip_code { "44-115" }
+    city { "Washington" }
   end
 end
