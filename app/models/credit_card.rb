@@ -1,5 +1,5 @@
 class CreditCard < ApplicationRecord
-  belongs_to :customer
+  belongs_to :customer, dependent: :destroy
 
   validates :number, presence: true, length: { is: 8 }, numericality: { only_integer: true }
   validates :cvc, presence: true, length: { is: 3 }, numericality: { only_integer: true }
