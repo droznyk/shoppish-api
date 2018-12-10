@@ -7,7 +7,6 @@ class CreateCreditCardService
   def call
     @credit_card_params[:expiration_date] = set_expiration_date(@credit_card_params[:expiration_date])
     @credit_card = @customer.credit_cards.create(@credit_card_params)
-    return @credit_card
   end
 
   private
