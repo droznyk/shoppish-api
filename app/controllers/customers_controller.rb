@@ -1,11 +1,7 @@
 class CustomersController < ApplicationController
   before_action :fetch_customer, only: %i[show update]
   def create
-    if customer_params.include?(:credit_card)
-      @customer = CreateCustomerWithCreditCardService.new(customer_params).call
-    else
-      @customer = CreateCustomerService.new(customer_params).call
-    end
+    @customer = CreateCustomerService.new(customer_params).call
     @customer.persisted? ? json_response(@customer, :created) : respond_with_error(@customer)
   end
 
