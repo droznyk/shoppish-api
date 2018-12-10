@@ -5,6 +5,6 @@ class CreateCustomerService
 
   def call
     @customer.save
-    return @customer
+    @customer
   end
 end
