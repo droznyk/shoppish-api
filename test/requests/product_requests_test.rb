@@ -26,7 +26,7 @@ class ProductRequestsTest < ActionDispatch::IntegrationTest
     post '/products', params: {product: attributes_for(:product, name: nil)}
     assert_equal 0, Product.count
     assert_response 422
-    assert_includes @response.body, "Name can't be blank"
+    assert_includes JSON.parse(@response.body)["errors"]["name"], "can't be blank"
   end
 
   test 'GET /products/:id' do
@@ -53,7 +53,7 @@ class ProductRequestsTest < ActionDispatch::IntegrationTest
     product = create(:product)
     put "/products/#{product.id}", params: { product: { price: -115 }  }
     assert_response 422
-    assert_includes @response.body, "Price must be greater than or equal to 0.0"
+    assert_includes JSON.parse(@response.body)["errors"]["price"], 'must be greater than or equal to 0.0'
   end
 
   test 'DELETE /products/:id' do
