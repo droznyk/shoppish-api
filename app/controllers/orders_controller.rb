@@ -6,7 +6,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = @customer.orders.new(order_params)
+    @order = @customer.orders.new
+    validation = CreateOrderValidator::CreateOrderSchema.with(record: @order).call(params.to_unsafe_h)
+    if validation.success?
+      @order.save
+      json_response(@order)
+    else
+      respond_with_error(validation)
+    end
   end
 
   private
@@ -22,5 +29,7 @@ class OrdersController < ApplicationController
     # end
   end
 
-
+  def json_response(object, status= :ok)
+    render json: object, status: status
+  end
 end
