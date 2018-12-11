@@ -1,5 +1,5 @@
 class CreditCardsController < ApplicationController
-  before_action :fetch_credit_card, only: %i[show update destroy]
+  before_action :fetch_credit_card, only: %i[show destroy]
 
   def index
     @credit_cards = Customer.find(params[:customer_id]).credit_cards
@@ -13,14 +13,6 @@ class CreditCardsController < ApplicationController
 
   def show
     json_response(@credit_card)
-  end
-
-  def update
-    if @credit_card.update(credit_card_params)
-      json_response(@credit_card)
-    else
-      respond_with_error(@credit_card)
-    end
   end
 
   def destroy
