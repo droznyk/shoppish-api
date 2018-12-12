@@ -1,0 +1,5 @@
+en:
+  errors:
+    case_insensitive_unique?: 'Is not unique'
+    in_future?: 'Expiration date cannot be in past'
+    equal_length?: "Length must be equal to %{number}"
